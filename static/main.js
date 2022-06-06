@@ -26,11 +26,11 @@ function formsubmit(event){
 }
 
 //시작하자마자 실행될 함수 
-window.onload= errorHide('none')
- function errorHide (none){
-    idError.style.display =none;
-    passwordError.style.display=none;
-    wrongpassword.style.display = none;  
+
+window.onload= function errorHide (){
+    idError.style.display ='none';
+    passwordError.style.display='none';
+    wrongpassword.style.display='none';  
     
 }
 
