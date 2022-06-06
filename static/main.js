@@ -1,6 +1,12 @@
 'use strict'
 const idError = document.querySelector(".idError")
+const idInput = document.querySelector(".idInput")
+const year= document.getElementById("year")
+const month= document.getElementById("month")
+const day= document.getElementById("day")
+const joinBtn = document.querySelector(".join")
 const inputForm = document.querySelector('form')
+const phoneInput = document.querySelector(".phoneInput")
 const passwordError = document.querySelector(".passwordError");
 const wrongpassword = document.querySelector(".wrongpassword");
 const passwordInputBox=document.querySelector(".passwordInput")
@@ -14,31 +20,35 @@ inputForm.addEventListener("submit",formsubmit);
 passwordInputBox.addEventListener("keyup",passwordCheck);
 passwordErrorInputBox.addEventListener("keyup",passwordErrorCheck);
 
-//시작하자마자 실행될 함수 
-window.onload= function errorHide (){
-    idError.style.display = 'none';
-    passwordError.style.display= 'none';
-    wrongpassword.style.display = 'none';
-    
-}
 //submit 이벤트
 function formsubmit(event){
     event.preventDefault();
 }
 
+//시작하자마자 실행될 함수 
+window.onload= errorHide('none')
+ function errorHide (none){
+    idError.style.display =none;
+    passwordError.style.display=none;
+    wrongpassword.style.display = none;  
+    
+}
+
+
   //비밀번호 형식 
    function passwordCheck(){
  if(!REGPASSSWORD.test(passwordInputBox.value)){
     passwordError.style.display= 'unset';
-   } 
-};
+   } ; };
+
+
 //비밀번호 일치
 function passwordErrorCheck(){
     if(passwordErrorInputBox.value===passwordInputBox.value){ 
-       wrongpassword.style.display= 'none';
-      }else{
-         wrongpassword.style.display= 'unset'
-      }};
+     wrongpassword.style.display= 'none';
+    }else{
+     wrongpassword.style.display= 'unset'
+    }};
 
 //휴대폰 번호자동입력 
 function autoHypenPhone(str){
@@ -68,7 +78,6 @@ function autoHypenPhone(str){
     }
     return str;
 }
-var phoneInput = document.querySelector(".phoneInput")
 phoneInput.onkeyup = function(event){
 event = event || window.event;
 var _val = this.value.trim();
@@ -76,59 +85,15 @@ this.value = autoHypenPhone(_val) ;
 }
 
 
-
-
-
-
-///////테스트
-// setInterval(() => test3(), 1000);
-// //실패
-// function test3(){
-
-// switch (passwordInputBox.value){
-//   case passwordInputBox.value.length< 9 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-//  case passwordInputBox.value.length< 10 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-//  case passwordInputBox.value.length< 11 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 12 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 13 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 14 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 15 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 16 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-
-//  case passwordInputBox.value.length< 17 && REGPASSSWORD.test(passwordInputBox.value):
-//         passwordError.style.display= 'none';
-//         break;
-
-//  case passwordInputBox.value.length< 18 && REGPASSSWORD.test(passwordInputBox.value):
-//     passwordError.style.display= 'none';
-//     break;
-// } }
-
-
-// function passwordCheck(){
-//   if(passwordInputBox.value.length <8 || passwordInputBox.value.length > 20 ){
-//      passwordError.style.display= 'unset';
-//     } else if(!REGPASSSWORD.test(passwordInputBox.value)){
-//      passwordError.innertext = "양식에 맞게 입력해주세요"
-//     }
+//버튼 활성화 
+setInterval( function btnDisabled(){
+if(
+(idInput.value!=="" &&
+ passwordInputBox.value!=="" && 
+ passwordErrorInputBox.value!==""&&
+year.options[year.selectedIndex].value !== "년도" &&
+month.options[month.selectedIndex].value !== "월" &&
+day.options[day.selectedIndex].value !== "일" &&
+phoneInput.value !=="")===true) { 
+joinBtn.disabled = false}
+},1000)
