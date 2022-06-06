@@ -67,3 +67,10 @@ span {
     height: 30px;
     width: 100px;
 }
+.join:disabled{
+    background-color: teal;
+}
+
+.join:hover{
+ background-color: aqua;
+}

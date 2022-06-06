@@ -11,8 +11,8 @@ const REGID = /^[a-z]+[a-z0-9]{5,19}$/g;
 
 //event handler
 inputForm.addEventListener("submit",formsubmit);
-passwordInputBox.addEventListener("change",passwordCheck);
-passwordErrorInputBox.addEventListener("change",passwordErrorCheck);
+passwordInputBox.addEventListener("keyup",passwordCheck);
+passwordErrorInputBox.addEventListener("keyup",passwordErrorCheck);
 
 //시작하자마자 실행될 함수 
 window.onload= function errorHide (){
