@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입페이지</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -16,14 +17,14 @@
     <h2>가입을 통해 더 다양한 서비스를 만나보세요!</h2>
     <form id="iputForm">
     <input type="" placeholder="아이디입력(6~20자)" class="idInput">
-    <button class="double">중복확인</button>
+    <button class="double" onclick="getid()">중복확인</button>
     <span class="idError">아이디를 올바르게 입력해주세요</span>
     <input type="password" class='passwordInput' placeholder="비밀번호입력(문자, 숫자,특수문자 포함8~20자)" >
     <span class="passwordError">비밀번호는 문자, 숫자,특수문자 포함입니다</span>
     <input type="password" placeholder="비밀번호 재입력" class="passwordErrorInput">
      <span class="wrongpassword">비밀번호가 일치하지 않습니다</span>
     <div class="email-box"> <input type="text" class="emaillInput" placeholder="이메일 주소">@ 
-        <select name="emailSelect"> 
+        <select name="emailSelect" id="domain"> 
         <option value="naver.com">naver.com</option>
         <option value="daum.net">daum.net</option>
         <option value="google.com">google.com</option>

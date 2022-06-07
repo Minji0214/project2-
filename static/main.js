@@ -1,12 +1,14 @@
 'use strict'
 const idError = document.querySelector(".idError")
 const idInput = document.querySelector(".idInput")
+const domain= document.getElementById("domain")
 const year= document.getElementById("year")
 const month= document.getElementById("month")
 const day= document.getElementById("day")
 const joinBtn = document.querySelector(".join")
 const inputForm = document.querySelector('form')
 const phoneInput = document.querySelector(".phoneInput")
+const emailInput = document.querySelector(".emaillInput")
 const passwordError = document.querySelector(".passwordError");
 const wrongpassword = document.querySelector(".wrongpassword");
 const passwordInputBox=document.querySelector(".passwordInput")
@@ -20,7 +22,7 @@ inputForm.addEventListener("submit",formsubmit);
 passwordInputBox.addEventListener("keyup",passwordCheck);
 passwordErrorInputBox.addEventListener("keyup",passwordErrorCheck);
 idInput.addEventListener("keyup",idCheck);
-joinBtn.addEventListener("click",clicktest);
+joinBtn.addEventListener("click",save_joindata);
 
 //submit 이벤트
 function formsubmit(event){
@@ -114,6 +116,52 @@ joinBtn.disabled = false}
 
 
 
-function clicktest(){
-    alert("성공")
+
+//show_bucket()
+/////////////////ajax
+function save_joindata(){
+    let id = $('.idInput').val()
+    let password =$('.passwordInput').val()
+    let email = emailInput.value+'@'+ domain.options[domain.selectedIndex].value
+    let birthday = year.options[year.selectedIndex].value+"년"
+         +month.options[month.selectedIndex].value+"월"
+         +day.options[day.selectedIndex].value+"일"
+    let cellphone= phoneInput.value
+$.ajax({
+type: "POST",
+url: "/join",
+data: {id_give: id, password_give: password, email_give:email, birthday_give:birthday,cellphone_give:cellphone},
+success: function (response) {
+alert(response["msg"])
+window.location.reload()
 }
+});
+}
+
+
+function getid(){
+    $.ajax({
+    type: "GET",
+    url: "/join",
+    data: {},
+    success: function (response) {
+    let rows = response['id']
+    for (let i=0 ; i<rows.length; i++){
+        let alreadyId = rows[i]['id']
+        if(alreadyId===$('.idInput').val()){
+            idError.style.display ='unset' ;
+            idError.innerHTML="중복된 아이디입니다.";
+            idError.style.color ='red';
+        }else {idError.style.display ='unset';
+        idError.innerHTML="사용가능한 아이디입니다" ;
+        idError.style.color ='blue';
+    }
+    }
+    }
+    });
+    }
+
+
+
+
+   
