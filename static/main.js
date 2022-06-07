@@ -19,6 +19,8 @@ const REGID = /^[a-z]+[a-z0-9]{5,19}$/g;
 inputForm.addEventListener("submit",formsubmit);
 passwordInputBox.addEventListener("keyup",passwordCheck);
 passwordErrorInputBox.addEventListener("keyup",passwordErrorCheck);
+idInput.addEventListener("keyup",idCheck);
+joinBtn.addEventListener("click",clicktest);
 
 //submit 이벤트
 function formsubmit(event){
@@ -26,20 +28,29 @@ function formsubmit(event){
 }
 
 //시작하자마자 실행될 함수 
-
 window.onload= function errorHide (){
     idError.style.display ='none';
     passwordError.style.display='none';
     wrongpassword.style.display='none';  
     
 }
+//아이디 형식
+function idCheck(){
+    if(!REGID.test(idInput.value)){
+       idError.style.display= 'unset'
+      }else(idError.style.display= 'none')};
+   
 
 
   //비밀번호 형식 
    function passwordCheck(){
- if(!REGPASSSWORD.test(passwordInputBox.value)){
+       if(passwordInputBox.value.length< 8 || passwordInputBox.value.length >20) {
+        passwordError.style.display= 'unset';
+        passwordError.innerHTML = "8이상 20자 이내로 입력해주세요";
+       }else if(!REGPASSSWORD.test(passwordInputBox.value)){
     passwordError.style.display= 'unset';
-   } ; };
+    passwordError.innerHTML = "비밀번호는 문자, 숫자,특수문자 포함입니다"
+   }else{passwordError.style.display='none';} };
 
 
 //비밀번호 일치
@@ -94,6 +105,15 @@ if(
 year.options[year.selectedIndex].value !== "년도" &&
 month.options[month.selectedIndex].value !== "월" &&
 day.options[day.selectedIndex].value !== "일" &&
+idError.style.display ==='none'&&
+passwordError.style.display==='none'&&
+wrongpassword.style.display==='none'&&
 phoneInput.value !=="")===true) { 
 joinBtn.disabled = false}
 },1000)
+
+
+
+function clicktest(){
+    alert("성공")
+}
