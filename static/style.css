@@ -10,7 +10,7 @@ body {
 }
 
 .wrapper {
-    width: 33%;
+    max-width: 303px;
     height: 90%;
     border-radius: 7px;
     box-shadow: 5px 0 5px 0 rgb(213, 204, 204);
@@ -22,11 +22,17 @@ h2 {
  font-size: 18px;
 }
 
-input {
+input  {
     border-color: rgb(213, 204, 204);
     color:rgb(213, 204, 204);
     border-radius: 5px;
     margin: 4px;
+}
+select{
+    border-radius: 5px;
+    height: 30px;
+    
+
 }
 
 button {
@@ -43,9 +49,10 @@ form {
 }
 .double {
     position: absolute;
-    right: 37px;
-    top: 6px;
+    right:  28%;
+    top: 9px;
     height: 25px;
+    border-radius: 5px;
 }
 span { 
     color:red;
@@ -54,19 +61,31 @@ span {
 }
 
 .passwordInput, .passwordErrorInput, .phoneInput, .idInput {
-    width: 90%;
+    width: 70%;
     height: 30px;
 
 }
 .join {
-    margin: 50px 50px 50px 120px;
     width: 125px;
     height: 35px;
+    position: absolute;
+    right: 45%;
+    bottom: 19%;
+    border-radius: 5px;
 }
-.email-box>input, select {
+.email-box>input {
     height: 30px;
-    width: 100px;
+    width: 80px;
+    
 }
 .join:disabled{
     background-color: teal;
+}
+.email-box{
+    width: 70%;
+    margin: 0;
+}
+#year, #day, #month{
+    width:23%;
+    
 }
